@@ -7,15 +7,15 @@
 </head>
 <body>
     <div class="container">
-    <!-- for문입력 -->
+    {% for apply in applies.all %}
         <div class="card">
-            <a href="#">
+            <a href="{% url 'addetail' apply.id %}">
             <div class="card-body">
-              <!-- 여기에 학번,학과,이름 그리고 업로드 시간 입력 -->
+                {{apply.student_id}} {{apply.name}}
             </div>
             </a>
         </div>
-    <!-- endfor -->
+    {% endfor %}
     </div>
 </body>
 </html>

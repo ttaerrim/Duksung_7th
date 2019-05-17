@@ -1,5 +1,8 @@
 from django.shortcuts import render
+from .forms import ApplyForm
+from .models import Apply
 
 # Create your views here.
 def adview(request):
-    return render(request,'adview.html')
+    applies = Apply.objects
+    return render(request, 'adview.html', {'applies' : applies})
