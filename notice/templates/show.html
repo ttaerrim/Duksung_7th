@@ -1,0 +1,10 @@
+<h1><a href="{% url 'post' %}"><글 작성하러 가기></a></h1>
+{%for notice in notices.all%}
+    <div class="container">
+        <a href="{% url 'detail' notice.id %}">
+            <h5>제목:{{notice.title}}</h5>
+        </a>
+        <p>내용: {{notice.body}}</p>
+        <small class="text-muted">{{notice.pub_date}}</small>
+    </div>
+{%endfor%}
