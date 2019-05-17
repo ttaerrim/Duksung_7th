@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+import apply.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('form/', apply.views.form, name='form'), # 지원하기
 ]
