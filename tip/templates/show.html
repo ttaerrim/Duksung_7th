@@ -1,0 +1,14 @@
+<h4><a href="{% url 'post' %}"><글 작성하러 가기></a></h4>
+<h4><a href="{% url 'deleteall' %}"><글 전체 삭제 하기></a></h4>
+
+{%for tip in tips.all%}
+    <div class="container">
+        <a href="{% url 'detail' tip.id %}">
+            <h1>제목:{{tip.title}}</h1>
+        </a>
+        <p>No.{{tip.id}}</p>
+        <p>내용: {{tip.body}}</p>
+        <small class="text-muted">{{tip.update_date}}</small>
+        <small>조회수:{{tip.hit}}</small>
+    </div>
+{%endfor%}

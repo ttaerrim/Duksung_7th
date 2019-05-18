@@ -1,0 +1,12 @@
+<div class ="container">
+    <a href="{% url 'show' %}">뒤로</a>
+    <a href="{% url 'edit' pk=tip.pk %}">글 수정하기</a>
+    <h1>제목:{{tip.title}}</h1>
+    <p>내용:{{tip.body}}</p>
+    <p>등록일:{{tip.update_date}}</p>
+         
+    <a href="{% url 'delete' pk=tip.pk %}">삭제</a>
+    <br>
+    <a href="{% url 'download' pk=tip.pk %}">다운로드</a>
+</div>
+<p style="visibility: hidden">{{tip.update_counter}}</p>
