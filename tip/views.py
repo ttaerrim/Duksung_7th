@@ -4,6 +4,7 @@ from .models import Tip
 from django.utils import timezone
 from django.http import HttpResponseRedirect,Http404,HttpResponse
 import os
+from django.core.paginator import Paginator, EmptyPage,PageNotAnInteger
 # Create your views here.
 def post(request):
     if request.method=="POST":
@@ -38,7 +39,7 @@ def edit(request,pk):
             tip=form.save(commit=False)
             tip.update_date=timezone.now()
             tip.save()
-            return redirect('/tip/show/')
+            return HttpResponseRedirect('/tip/post_list/')
 
     else:
         form=TipForm(instance=tip)
@@ -59,13 +60,47 @@ def deleteall(request):
 
 
 def download(request,pk):
-    
     upload=get_object_or_404(Tip,pk=pk)
-    file_url=upload.file.url[1:]
-    if os.path.exists(file_url):
-        with open(file_url,'rb') as fh:
-            response=HttpResponse(fh.read(),content_type="application/octet-stream")
-            response['Content-Disposition']='inline:filename='+os.path.basename(file_url)
-            return response
-        raise Http404   
+    if upload.file==None:
+        file_url=upload.file.url[1:]
+        if os.path.exists(file_url):
+            with open(file_url,'rb') as fh:
+                response=HttpResponse(fh.read(),content_type="application/octet-stream")
+                response['attachment']='inline:filename='+os.path.basename(file_url)
+                return response
+            raise Http404   
+    else:
+        return redirect('post_list')
 
+
+def post_list(request):
+    PAGE_ROW_COUNT=5
+    PAGE_DISPLAY_COUNT=5
+
+    total_list=Tip.objects.all().order_by('-id')
+    paginator=Paginator(total_list,PAGE_ROW_COUNT)
+    pageNum=request.GET.get('pageNum')
+
+    totalPageCount=paginator.num_pages
+
+    try:
+        total_list=paginator.page(pageNum)
+    except PageNotAnInteger:
+        total_list=paginator.page(1)
+        pageNum=1
+    except EmptyPage:
+        total_list=paginator.page(paginator.num_pages)
+        pageNum=paginator.num_pages
+    pageNum=int(pageNum)
+
+    startPageNum=1+((pageNum-1)/PAGE_DISPLAY_COUNT)*PAGE_DISPLAY_COUNT
+    endPageNum=startPageNum+PAGE_DISPLAY_COUNT-1
+    if totalPageCount<endPageNum:
+        endPageNum=totalPageCount
+    bottomPages=range(int(startPageNum),int(endPageNum+1))
+
+    return render(request,'show.html',{
+       
+        'total_list':total_list,
+        'pageNum':pageNum,
+        'bottomPages':bottomPages,'totalPageCount':totalPageCount,'startPageNum':startPageNum,'endPageNum':endPageNum})
