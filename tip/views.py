@@ -13,7 +13,7 @@ def post(request):
             tip=form.save(commit=False)
             tip.update_date=timezone.now()
             tip.save()
-            return HttpResponseRedirect('/tip/show/')
+            return HttpResponseRedirect('/tip/post_list')
 
     else:
         form=TipForm()
@@ -39,7 +39,7 @@ def edit(request,pk):
             tip=form.save(commit=False)
             tip.update_date=timezone.now()
             tip.save()
-            return HttpResponseRedirect('/tip/post_list/')
+            return HttpResponseRedirect('/tip/post_list')
 
     else:
         form=TipForm(instance=tip)
@@ -49,7 +49,7 @@ def edit(request,pk):
 def delete(request,pk):
     tip=Tip.objects.get(id=pk)
     tip.delete()
-    return redirect('show')
+    return redirect('post_list')
 
 def deleteall(request):
     tips=Tip.objects.all()
@@ -61,16 +61,14 @@ def deleteall(request):
 
 def download(request,pk):
     upload=get_object_or_404(Tip,pk=pk)
-    if upload.file==None:
-        file_url=upload.file.url[1:]
-        if os.path.exists(file_url):
-            with open(file_url,'rb') as fh:
-                response=HttpResponse(fh.read(),content_type="application/octet-stream")
-                response['attachment']='inline:filename='+os.path.basename(file_url)
-                return response
-            raise Http404   
-    else:
-        return redirect('post_list')
+    file_url=upload.file.url[1:]
+    if os.path.exists(file_url):
+        with open(file_url,'rb') as fh:
+            response=HttpResponse(fh.read(),content_type="application/octet-stream")
+            response['attachment']='inline:filename='+os.path.basename(file_url)
+            return response
+        raise Http404   
+  
 
 
 def post_list(request):
