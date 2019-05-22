@@ -8,10 +8,11 @@
             {% csrf_token %}
             <input type="submit" value="삭제">
     </form> 
+    {% if tip.file %}
     <form action="{% url 'download' pk=tip.pk %}" method="GET">
             {% csrf_token %}
             <input type="submit" value="다운로드">
     </form>
-   
+   {% endif %}
 </div>
 <p style="display:none">{{tip.update_counter}}</p>
