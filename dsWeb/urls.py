@@ -19,5 +19,5 @@ import apply.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('addetail/', apply.views.addetail, name="addetail"),
+    path('addetail/<int:apply_id>/', apply.views.addetail, name="addetail"),
 ]

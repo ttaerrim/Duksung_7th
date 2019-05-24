@@ -1,10 +1,13 @@
-<p>지원서 디테일</p> 
-<div>
-    <p>application</p>
+{% for apply in applys.all %}
 
-    <a href="DB 지원서"> <지원서보기> </a>
+    <p> <지원서 확인 페이지> </p> 
+    <div>
+        <p>application</p>
+    
+        <a href="{% url apply.file apply_id %} "> <지원서보기> </a>
 
-    <p> 이름 : {{ DB 이름 데이터 }} </p>
+        <p> 이름 : {{ apply.name }} </p>
 
-    <P> 학번 : {{ DB 학번 데이터}} </P> 
-</div>
+        <P> 학번 : {{ apply.student_id }} </P> 
+    </div>
+{%endfor%}
