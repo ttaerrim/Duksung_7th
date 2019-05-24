@@ -7,11 +7,12 @@
 </head>
 <body>
     <div class="container">
-    {% for apply in applies.all %}
+    {% for apply in applies %}
         <div class="card">
             <a href="{% url 'addetail' apply.id %}">
             <div class="card-body">
-                {{apply.student_id}} {{apply.name}}
+                <p>{{apply.student_id}}</p>
+                <p>{{apply.name}}</p>
             </div>
             </a>
         </div>

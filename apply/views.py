@@ -4,5 +4,5 @@ from .models import Apply
 
 # Create your views here.
 def adview(request):
-    applies = Apply.objects
+    applies = Apply.objects.all()
     return render(request, 'adview.html', {'applies' : applies})
