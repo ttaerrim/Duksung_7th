@@ -20,4 +20,5 @@ import apply.views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('form/', apply.views.form, name='form'), # 지원하기
+    path('adview/', apply.views.adview, name='adview'),
 ]

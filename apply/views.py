@@ -15,3 +15,6 @@ def form(request):
     else:
         form = ApplyForm()
         return render(request, 'form.html', {'form':form})
+def adview(request):
+    applies = Apply.objects.all()
+    return render(request, 'adview.html', {'applies' : applies})
