@@ -10,7 +10,4 @@ class apply(models.Model):
     phone = models.IntegerField(null=True)
     body = models.TextField(null=True)
     file = models.FileField(null=True)
-    isFinal = models.CharField(max_length=10,null=True)
-
-    def __str__ (self):
-        return self.title
+    isFinal = models.BooleanField(null=True)
