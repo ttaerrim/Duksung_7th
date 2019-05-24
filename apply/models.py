@@ -2,12 +2,12 @@ from django.db import models
 
 # Create your models here.
 
-class apply(models.Model):
+class Apply(models.Model):
     name = models.CharField(max_length=6)
-    major = models.CharField
-    student_id = models.IntegerField
-    email = models.EmailField
-    phone = models.IntegerField
-    body = models.TextField
-    file = models.FileField
-    isFinal = models.CharField
+    major = models.CharField(max_length=10,null=True)
+    student_id = models.IntegerField(null=True)
+    email = models.EmailField(null=True)
+    phone = models.IntegerField(null=True)
+    body = models.TextField(null=True)
+    file = models.FileField(null=True)
+    isFinal = models.BooleanField(null=True)
