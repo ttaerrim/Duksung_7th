@@ -1,0 +1,9 @@
+<form method='POST'>
+    {% csrf_token %}
+    <table>
+        {{form.as_table}}
+    </table>
+    <br>
+    <input type="submit" value="임시저장">
+    <input type="submit" value="제출">
+</form>
