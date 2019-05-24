@@ -1,1 +1,11 @@
 <!--후기방 내용 작성 페이지-->
+<div class = 'container'>
+    <form method = 'RPOST'>
+        {% csrf_token%}
+        <table>
+            {{form.as_table}}
+        </table>
+        <br>
+        <input class="btn btn-dark" type="submit" value="저장">
+    </form>
+</div>
