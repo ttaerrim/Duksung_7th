@@ -1,1 +1,193 @@
 <!--후기방 메인페이지-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Review</title>
+    <script type="text/javascript">
+        function show_layer(div_name) {
+
+            document.all.div_01.style.display="none";
+            document.all.div_02.style.display="none";
+            document.all.div_03.style.display="none";
+            document.all.div_04.style.display="none";
+            document.all.div_05.style.display="none";
+
+            switch(div_name)
+            {
+                case'1':
+                document.all.div_01.style.display="";
+                break;
+                case'2':
+                document.all.div_02.style.display="";
+                break;
+                case'3':
+                document.all.div_03.style.display="";
+                break;
+                case'4':
+                document.all.div_04.style.display="";
+                break;
+                case'5':
+                document.all.div_05.style.display="";
+                break;
+
+            }
+
+        }
+    </script>
+
+    <style type="text/css">
+        .a{
+            display: inline-block;
+            padding: 20px;
+        }
+        h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>멋쟁이 사자처럼 활동 후기방</h1>
+    
+    <span style="float: right"><button type="button" onclick="location.href='rpost.html'">후기쓰기</button></span>
+        
+    </form><br><br>
+
+    <!-------------------------------->
+    <DIV id=div_01 >
+        <table width="707px" cellspacing="0" cellpadding="0" border="0" align="center" style="margin-top: 30px;" >
+
+          <tr>
+
+           <td>#멋사MT</td>
+
+           <td><a href="javascript:show_layer('2');">#아이디어톤</a></td>
+
+           <td><a href="javascript:show_layer('3');">#해커톤</a></td>
+
+           <td><a href="javascript:show_layer('4');">#세션</a></td>    
+
+           <td><a href="javascript:show_layer('5');">#기타</a></td>
+
+       </tr>
+
+       <tr><td  colspan=4 align=center style='padding-top:20px;'>MT~</td></tr>
+
+   </table>
+
+</DIV>
+
+
+
+<!--------------------------------------------->
+
+<DIV id=div_02 style="DISPLAY: none">
+
+ <table width="707px" cellspacing="0" cellpadding="0" border="0" align="center" style="margin-top: 30px;" >
+
+  <tr>
+
+   <td><a href="javascript:show_layer('1');">#멋사MT</a></td>
+
+   <td>#아이디어톤</td>
+
+   <td><a href="javascript:show_layer('3');">#해커톤</a></td>
+
+   <td><a href="javascript:show_layer('4');">#세션</a></td>    
+
+   <td><a href="javascript:show_layer('5');">#기타</a></td>
+
+</tr>
+
+<tr><td  colspan=4 align=center style='padding-top:20px;'>아이디어톤~ </td></tr>
+
+</table>
+
+</DIV>
+
+
+
+<!----------------------------------->
+
+<DIV id=div_03 style="DISPLAY: none">
+
+
+
+ <table width="707px" cellspacing="0" cellpadding="0" border="0" align="center" style="margin-top: 30px;" >
+
+  <tr>
+
+   <td><a href="javascript:show_layer('1');">#멋사MT</a></td>
+
+   <td><a href="javascript:show_layer('2');">#아이디어톤</a></td>
+
+   <td>#해커톤</td>
+
+   <td><a href="javascript:show_layer('4');">#세션</a></td>    
+
+   <td><a href="javascript:show_layer('5');">#기타</a></td>
+
+
+</tr>
+
+<tr><td  colspan=4 align=center style='padding-top:20px;'>해커톤~</td></tr>
+
+</table>
+
+</DIV>
+
+
+
+<!------------------------------------>
+
+<DIV id=div_04 style="DISPLAY: none">
+
+
+
+ <table width="707px" cellspacing="0" cellpadding="0" border="0" align="center" style="margin-top: 30px;" >
+
+  <tr>
+
+   <td><a href="javascript:show_layer('1');">#멋사MT</a></td>
+
+   <td><a href="javascript:show_layer('2');">#아이디어톤</a></td>
+
+   <td><a href="javascript:show_layer('3');">#해커톤</a></td>
+
+   <td>#세션</td>    
+
+   <td><a href="javascript:show_layer('5');">#기타</a></td>
+
+</tr>
+
+<tr><td  colspan=4 align=center style='padding-top:20px;'>세션~</td></tr>
+
+</table>
+
+</DIV>
+<!------------------------------------------>
+<DIV id=div_05 style="DISPLAY: none">
+
+ <table width="707px" cellspacing="0" cellpadding="0" border="0" align="center" style="margin-top: 30px;" >
+
+  <tr>
+
+   <td><a href="javascript:show_layer('1');">#멋사MT</a></td>
+
+   <td><a href="javascript:show_layer('2');">#아이디어톤</a></td>
+
+   <td><a href="javascript:show_layer('3');">#해커톤</a></td>
+
+   <td><a href="javascript:show_layer('4');">#세션</a></td>
+
+   <td>#기타</td>      
+
+</tr>
+
+<tr><td  colspan=4 align=center style='padding-top:20px;'>기타~</td></tr>
+
+</table>
+
+</DIV>
+
+</body>
+</html>
