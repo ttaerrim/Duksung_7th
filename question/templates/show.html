@@ -1,0 +1,66 @@
+<h4><a href="{% url 'post' %}">글작성</a></h4>
+
+        
+<div class="container">
+    <table>
+        <thead>
+            <tr>
+                <th width=50px>번호</th>
+                <th>해결 여부</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>답변 수</th>
+                <th>공감</th>
+                <th>작성일</th>
+                <th>조회수</th>
+            </tr>
+        </thead>
+        <tbody>
+                    {%for board in boards %}
+                    
+            <tr>
+                <td>
+                    {{board.id}}
+                </td>
+                
+                {% if board.solved == False %}
+                    <td>미해결</td>
+                {% else %}
+                    <td>해결</td>
+                {% endif %}
+
+                    
+                    <td onclick="appear(this)">
+                        <a href="{% url 'detail' board.id %}">
+                                {{board.title}}</a>
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                            
+                    </td>
+                    <td>
+
+                    </td>
+                    <td>
+                            {{board.update_date}}
+                    </td>
+                    <td>
+                        {{board.hits}}
+                    </td>
+                    
+            </tr>
+                {%endfor%}
+        </tbody>
+    </table>
+    
+
+
+    <div class="content">
+
+    </div>
+        
+</body>
+</html>
+
