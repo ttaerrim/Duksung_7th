@@ -2,14 +2,8 @@ from django.shortcuts import render,get_object_or_404,redirect
 from .forms import BoardForm
 from .models import Board #, Like
 from django.utils import timezone
-# try:
-#     from django.utils import simplejson as json
-# except ImportError:
-#     import json
-# from django.contrib.auth.models import User
-# from django.contrib.auth.decorators import login_required
-# from django.views.decorators.http import require_POST
-# Create your views here.
+from django.core.paginator import Paginator
+
 
 def post(request):
     if request.method == "POST":
@@ -24,8 +18,12 @@ def post(request):
         return render(request,'post.html',{'form':form})    
 
 def show(request):
+    board = Board.objects
     boards = Board.objects.all().order_by('-id')
-    return render(request, 'show.html', {'boards':boards})
+    paginator = Paginator(boards, 5)
+    page = request.GET.get('page')
+    posts = paginator.get_page(page)
+    return render(request, 'show.html', {'boards':boards, 'posts':posts})
 
 def detail(request,board_id):
     board_detail = get_object_or_404(Board, pk=board_id)

@@ -21,8 +21,9 @@ class Board(models.Model):
         return self.body[:50]
 
     @property
-    def like_count(self):
-        return self.like_user_set.count()
+    def update_counter(self):
+        self.hits = self.hits + 1
+        self.save()
 
 class Like(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
