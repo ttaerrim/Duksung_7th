@@ -16,7 +16,7 @@
             </tr>
         </thead>
         <tbody>
-                    {%for board in boards %}
+                    {%for board in posts %}
                     
             <tr>
                 <td>
@@ -54,6 +54,18 @@
                 {%endfor%}
         </tbody>
     </table>
+    
+    {% if posts.has_previous %}
+    <a href="?page=1">1</a>
+    <a href="?page={{posts.previous_page_number}}">이전</a>
+    {% endif %}
+    <span>{{posts.number}}</span>
+    <span>/</span>
+    <span>{{posts.paginator.num_pages}}</span>
+    {% if posts.has_next %}
+    <a href="?page={{posts.next_page_number}}">다음</a>
+    <a href="?page={{posts.paginator.num_pages}}">맨 뒤로</a>
+    {% endif %}
     
 
 
