@@ -7,5 +7,10 @@
     {% if board.photo %}
     <img src="{{ board.photo.url }}" alt="">
     {% endif %}
+    {{ board.update_counter }}
+
+    
+    
+    
     <a href="{% url 'delete' pk=board.pk %}">삭제</a>
 </div>

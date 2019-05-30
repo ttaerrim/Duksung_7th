@@ -1,10 +1,78 @@
 <h4><a href="{% url 'post' %}">글작성</a></h4>
-{%for board in boards.all%}
-    <div class="container">
-        <a href ="{% url 'detail' board.id %}">
-            <h1>제목: {{board.title}}</h1>
-        </a>
-        <p> 내용 : {{board.body}}</p>
-        <small class="text-muted">{{board.pub_date}}</small>
+
+        
+<div class="container">
+    <table>
+        <thead>
+            <tr>
+                <th width=50px>번호</th>
+                <th>해결 여부</th>
+                <th>제목</th>
+                <th>작성자</th>
+                <th>답변 수</th>
+                <th>공감</th>
+                <th>작성일</th>
+                <th>조회수</th>
+            </tr>
+        </thead>
+        <tbody>
+                    {%for board in posts %}
+                    
+            <tr>
+                <td>
+                    {{board.id}}
+                </td>
+                
+                {% if board.solved == False %}
+                    <td>미해결</td>
+                {% else %}
+                    <td>해결</td>
+                {% endif %}
+
+                    
+                    <td onclick="appear(this)">
+                        <a href="{% url 'detail' board.id %}">
+                                {{board.title}}</a>
+                    </td>
+                    <td>
+                        
+                    </td>
+                    <td>
+                            
+                    </td>
+                    <td>
+
+                    </td>
+                    <td>
+                            {{board.update_date}}
+                    </td>
+                    <td>
+                        {{board.hits}}
+                    </td>
+                    
+            </tr>
+                {%endfor%}
+        </tbody>
+    </table>
+    
+    {% if posts.has_previous %}
+    <a href="?page=1">1</a>
+    <a href="?page={{posts.previous_page_number}}">이전</a>
+    {% endif %}
+    <span>{{posts.number}}</span>
+    <span>/</span>
+    <span>{{posts.paginator.num_pages}}</span>
+    {% if posts.has_next %}
+    <a href="?page={{posts.next_page_number}}">다음</a>
+    <a href="?page={{posts.paginator.num_pages}}">맨 뒤로</a>
+    {% endif %}
+    
+
+
+    <div class="content">
+
     </div>
-{%endfor%}
+        
+</body>
+</html>
+

@@ -1,6 +1,7 @@
 from question import views
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import url
 
 urlpatterns = [
     path('post/',views.post,name='post'), #글쓰기
@@ -9,3 +10,5 @@ urlpatterns = [
     path('<int:pk>/edit/',views.edit, name='edit'),
     path('<int:pk>/delete/',views.delete,name='delete'),
 ] 
+    # url(r'^(?P<pk>\d+)/like/$', views.post_like, name='post_like'),
+]
