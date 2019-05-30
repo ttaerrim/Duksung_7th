@@ -7,6 +7,8 @@ class Board(models.Model):
     title = models.CharField(max_length=200)
     body = models.TextField()
     update_date = models.DateTimeField(auto_now=True)
+    photo = models.ImageField(blank=True,null=True, upload_to="")
+
     hits = models.PositiveIntegerField(default = 0) # 조회수
     writer = models.CharField(max_length=100, blank=True) # 작성자
     solved = models.BooleanField(default=False) # 해결 여부
@@ -20,6 +22,9 @@ class Board(models.Model):
     def summary(self):
         return self.body[:50]
 
+    def photo_url(self):
+        if self.photo and hasattr(self.photo, 'url'):
+            return self.photo.url
     @property
     def update_counter(self):
         self.hits = self.hits + 1

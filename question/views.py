@@ -2,12 +2,15 @@ from django.shortcuts import render,get_object_or_404,redirect
 from .forms import BoardForm
 from .models import Board #, Like
 from django.utils import timezone
+
+
+# Create your views here.
 from django.core.paginator import Paginator
 
 
 def post(request):
     if request.method == "POST":
-        form = BoardForm(request.POST)
+        form = BoardForm(request.POST,request.FILES)
         if form.is_valid():
             board = form.save(commit = False)
             board.update_date =timezone.now()
@@ -31,7 +34,7 @@ def detail(request,board_id):
 def edit(request, pk):
     board = get_object_or_404(Board, pk=pk)  
     if request.method == "POST":
-        form = BoardForm(request.POST, instance=board) 
+        form = BoardForm(request.POST,request.FILES,instance=board)
         if form.is_valid():
             board = form.save(commit = False)
             board.update_date=timezone.now()
@@ -39,7 +42,7 @@ def edit(request, pk):
             return redirect('show')
     else:
         form = BoardForm(instance=board)
-        return render(request,'edit.html',{'form':form})
+    return render(request,'edit.html',{'form':form})
 
 def delete(request,pk):
     board = Board.objects.get(id=pk)

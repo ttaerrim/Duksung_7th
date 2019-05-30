@@ -9,5 +9,6 @@ urlpatterns = [
     path('show/',views.show,name='show'),
     path('<int:pk>/edit/',views.edit, name='edit'),
     path('<int:pk>/delete/',views.delete,name='delete'),
+] 
     # url(r'^(?P<pk>\d+)/like/$', views.post_like, name='post_like'),
 ]
