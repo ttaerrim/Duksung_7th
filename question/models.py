@@ -5,7 +5,7 @@ class Board(models.Model):
     title = models.CharField(max_length=200)
     body = models.TextField()
     update_date = models.DateTimeField(auto_now=True)
-    photo = models.ImageField(blank=True, upload_to="")
+    photo = models.ImageField(blank=True,null=True, upload_to="")
 
 
     def __Str__(self):
