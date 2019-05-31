@@ -8,7 +8,6 @@ class Board(models.Model):
     body = models.TextField()
     update_date = models.DateTimeField(auto_now=True)
     photo = models.ImageField(blank=True,null=True, upload_to="")
-
     hits = models.PositiveIntegerField(default = 0) # 조회수
     writer = models.CharField(max_length=100, blank=True) # 작성자
     solved = models.BooleanField(default=False) # 해결 여부
