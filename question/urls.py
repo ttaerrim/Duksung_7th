@@ -13,4 +13,5 @@ urlpatterns = [
     path('<int:board_pk>/comment/<int:pk>/edit/', views.comment_edit, name='comment_edit'),
     
 ] 
+    # url(r'^(?P<pk>\d+)/like/$', views.post_like, name='post_like'),
 
