@@ -40,14 +40,17 @@
                 <br>
                 <p> {{board.body}}</p>
                 {% if board.photo %}
-                <img src="{{ board.photo.url }}" alt="" width="700px" height="500px">
+                <img src="{{ board.photo.url }}">
                 {% endif %}
 
+                <br>
                 <br>
                 <span id="qBtn"><button type="button" class="btn btn-outline-danger" onclick="location.href='{% url 'show' %}'">뒤로</button>
                     <button type="button" class="btn btn-outline-danger" onclick="location.href='{% url 'edit' pk=board.pk %}'">글 수정</button>
                     <button type="button" class="btn btn-outline-danger" onclick="location.href='{% url 'delete' pk=board.pk %}'">삭제</button>
             </div>
+
+            {{board.update_counter}}
     
 </form>   
 

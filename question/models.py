@@ -31,6 +31,7 @@ class Board(models.Model):
     def update_counter(self):
         self.hits = self.hits + 1
         self.save()
+        return ""
 
 class Like(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
