@@ -5,4 +5,36 @@
     <p> 내용 : {{board.body}}</p>
     <p> 등록일 {{board.update_date}}</p>
     <a href="{% url 'delete' pk=board.pk %}">삭제</a>
+
 </div>
+
+<br><br>
+
+<!--댓글쓰기 폼-->
+<div class="container">
+    <h5 class="card-header">댓글</h5>
+    <div class="card-body"></div>
+        <form method="POST" action="comment/write/">
+        {% csrf_token %}
+        <textarea rows="5" cols="80" name="content">
+
+        </textarea>
+        <br><br>
+    
+        <button type="submit" class="btn btn-primary">등록</button>
+
+        </form>
+    </div>
+</div>
+ 
+
+<!--댓글 목록을 출력할 영역-->
+{% for comment in board.comments.all %}
+<div class="comment_body">
+        <h5>{{comment.content}}</h5>
+        <small>{{comment.created_at}}</small>
+        <a href="{% url 'comment_edit' comment.pk }">수정</a>
+        
+
+</div>
+{% endfor %}

@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',question.views.show,name='show'),
     path('question/',include('question.urls')),
+    
 ]
