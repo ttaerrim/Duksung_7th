@@ -20,6 +20,8 @@
       .container {background-color:linen;}
       #full {background-color:linen;margin-top: 80px}
       #qnajung {background-color: #7C2529;padding:15px;}
+
+      
   </style>
 </head>
 
@@ -38,7 +40,7 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th width=50px scope="col">번호</th>
+                <th width=70px scope="col">번호</th>
                 <th scope="col">해결 여부</th>
                 <th scope="col">제목</th>
                 <th scope="col">작성자</th>
@@ -89,20 +91,25 @@
     </table>
     
     {% if posts.has_previous %}
-    <a href="?page=1">1</a>
-    <a href="?page={{posts.previous_page_number}}">이전</a>
+    <span id="qBtn"><button type="button" class="btn btn-outline-danger" onclick="location.href='?page=1'">처음으로</button>
+        <button type="button" class="btn btn-outline-danger" onclick="location.href='?page={{posts.previous_page_number}}'">이전</button>
+    </span>
     {% endif %}
     <span>{{posts.number}}</span>
     <span>/</span>
     <span>{{posts.paginator.num_pages}}</span>
     {% if posts.has_next %}
-    <a href="?page={{posts.next_page_number}}">다음</a>
-    <a href="?page={{posts.paginator.num_pages}}">맨 뒤로</a>
+
+    <span id="qBtn"><button type="button" class="btn btn-outline-danger" onclick="location.href='?page={{posts.next_page_number}}'">다음</button>
+        <button type="button" class="btn btn-outline-danger" onclick="location.href='?page={{posts.paginator.num_pages}}'">맨 뒤로</button>
+    </span>
+    <!-- <a href="?page={{posts.next_page_number}}"></a> -->
+    
     {% endif %}
-   
-    <h4><a href="{% url 'post' %}">
-    <input class="btn btn-dark" type="submit" value="글작성">
-    </a></h4>
+    <br><br>
+        <h4><a href="{% url 'post' %}">
+            <input class="btn btn-dark" type="submit" value="글작성">
+            </a></h4>
     <div class="content">
 
     </div>
