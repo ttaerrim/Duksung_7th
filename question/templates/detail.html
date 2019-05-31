@@ -4,6 +4,14 @@
     <h1>제목: {{board.title}}</h1>
     <p> 내용 : {{board.body}}</p>
     <p> 등록일 {{board.update_date}}</p>
+    {% if board.photo %}
+    <img src="{{ board.photo.url }}" alt="">
+    {% endif %}
+    {{ board.update_counter }}
+
+    
+    
+    
     <a href="{% url 'delete' pk=board.pk %}">삭제</a>
 
 </div>

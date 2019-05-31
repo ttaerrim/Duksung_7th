@@ -1,6 +1,7 @@
 from question import views
 from django.contrib import admin
 from django.urls import path
+from django.conf.urls import url
 
 urlpatterns = [
     path('post/',views.post,name='post'), #글쓰기
@@ -11,4 +12,5 @@ urlpatterns = [
     path('<int:pk>/comment/write/', views.comment_write, name='comment_write'),
     path('<int:board_pk>/comment/<int:pk>/edit/', views.comment_edit, name='comment_edit'),
     
-    ]
+] 
+
