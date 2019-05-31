@@ -25,4 +25,5 @@ class Comment(models.Model):
         return reverse('comment_edit', args=[self.board.pk, self.pk])
 
 
+
    

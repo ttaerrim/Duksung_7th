@@ -33,7 +33,7 @@
 <div class="comment_body">
         <h5>{{comment.content}}</h5>
         <small>{{comment.created_at}}</small>
-        <a href="{% url 'comment_edit' comment.pk }">수정</a>
+        <a href="{% url 'comment_edit' board.pk comment.pk %}">수정</a>
         
 
 </div>

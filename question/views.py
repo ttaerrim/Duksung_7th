@@ -45,7 +45,22 @@ def comment_write(request, pk):
             comment_form = CommentForm()
     return render(request, 'comment_form.html', {'comment_form' : comment_form})
     
+def comment_edit(request, board_pk, pk):
+    comment = get_object_or_404(Comment, pk=pk)
 
+    if request.method == 'POST':
+            comment_form = CommentForm(request.POST, instance=comment)
+
+            if comment_form.is_valid():
+                    comment = comment_form.save(commit=False)
+                    comment.board = Board.objects.get(pk=board_pk)
+                    comment.save()
+                    return redirect('detail', board_pk)
+
+    else:
+            comment_form = CommentForm(instance=comment)
+    return render(request, 'comment_form.html', {'comment_form' : comment_form})   
+    
 def edit(request, pk):
     board = get_object_or_404(Board, pk=pk)  
     if request.method == "POST":
@@ -64,19 +79,3 @@ def delete(request, pk):
     board.delete()
     return redirect('show')
 
-# def comment_edit(request, board_pk, pk):
-#     comment = get_object_or_404(pk=pk)
-
-#     if request.method == 'POST':
-#             comment_form = CommentForm(request.POST, instance=comment)
-
-#             if comment_form.is_valid():
-#                     comment = comment_form.save(commit=False)
-#                     comment.board = Board.objects.get(pk=board_pk)
-#                     comment.save()
-#                     return redirect('detail', comment.board.pk)
-#                     #return redirect('detail', board_pk)
-
-#     else:
-#             comment_form = CommentForm(instance=comment)
-#     return render(request, 'comment_form.html', {'comment_form' : comment_form})   
