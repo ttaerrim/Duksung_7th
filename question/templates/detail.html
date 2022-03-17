@@ -22,7 +22,11 @@
       body{
         background-color:linen;
       }
-      .container {margin-top: 70px;margin-right:80px}
+      .container {display: flex;
+      flex-direction: column;
+    margin: 0 auto;
+  margin-top: 50px;}
+
      
   </style>
 </head>
@@ -30,7 +34,8 @@
 <body>
    
 
-<form method = 'POST'> {% csrf_token %}
+<!-- <form method = 'POST'> -->
+   {% csrf_token %}
             <div class="container">
                 
                 <h1>{{board.title}}</h1>
@@ -40,7 +45,7 @@
                 <br>
                 <p> {{board.body}}</p>
                 {% if board.photo %}
-                <img src="{{ board.photo.url }}">
+                <img width="800" src="{{ board.photo.url }}">
                 {% endif %}
 
                 <br>
@@ -52,7 +57,7 @@
 
             {{board.update_counter}}
     
-</form>   
+<!-- </form>    -->
 
 </body>
 </html> 
